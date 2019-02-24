@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @issue.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @issue.status %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @issue.category %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @issue.type %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @issue.project %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @issue.priority %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @issue.department %>
+</p>
+
+<p>
+  <strong>Isprivate:</strong>
+  <%= @issue.isprivate %>
+</p>
+
+<p>
+  <strong>Assignedby:</strong>
+  <%= @issue.assignedby %>
+</p>
+
+<p>
+  <strong>Openedby:</strong>
+  <%= @issue.openedby %>
+</p>
+
+<p>
+  <strong>Openeddate:</strong>
+  <%= @issue.openeddate %>
+</p>
+
+<p>
+  <strong>Closedby:</strong>
+  <%= @issue.closedby %>
+</p>
+
+<p>
+  <strong>Closeddate:</strong>
+  <%= @issue.closeddate %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @issue.deadline %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

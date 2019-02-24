@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  status: MyText
+  category: MyText
+  type: MyText
+  project: one
+  priority: MyString
+  department: MyString
+  isprivate: false
+  assignedby: one
+  openedby: one
+  openeddate: 2019-02-24 17:13:12
+  closedby: one
+  closeddate: 2019-02-24 17:13:12
+  deadline: 2019-02-24 17:13:12
+
+two:
+  title: MyString
+  description: MyText
+  status: MyText
+  category: MyText
+  type: MyText
+  project: two
+  priority: MyString
+  department: MyString
+  isprivate: false
+  assignedby: two
+  openedby: two
+  openeddate: 2019-02-24 17:13:12
+  closedby: two
+  closeddate: 2019-02-24 17:13:12
+  deadline: 2019-02-24 17:13:12
