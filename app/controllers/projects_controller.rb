@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :find_users, only: [:index, :show, :new, :edit]
   # GET /projects
   # GET /projects.json
   def index
@@ -67,6 +67,9 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
+    def find_users
+      @users = User.all.order('created_at desc')
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :description, :company, :manager_id)

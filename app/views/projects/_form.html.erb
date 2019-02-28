@@ -1,4 +1,4 @@
-<%= form_with(model: project, local: true) do |form| %>
+<%= simple_form_for(@project) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -26,9 +26,20 @@
     <%= form.text_field :company %>
   </div>
 
+
+  
+  
+
   <div class="field">
-    <%= form.label :manager_id %>
-    <%= form.text_field :manager_id %>
+    <label class="label">Project Manager</label>
+    <div class="control has-icons-left">
+      <span class="select">
+       <%= form.input_field :manager_id, collection:@users.map { |u| [u.fullname, u.id] }, prompt: "Select Manager" %>
+      </span>
+      <span class="icon is-small is-left">
+        <i class="fa fa-tag"></i>
+      </span>
+    </div>
   </div>
 
   <div class="actions">

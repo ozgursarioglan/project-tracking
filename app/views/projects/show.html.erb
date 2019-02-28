@@ -17,7 +17,7 @@
 
 <p>
   <strong>Manager:</strong>
-  <%= @project.manager_id%>
+  <%= @project.user.try(:email) || 'user not defined'  %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
