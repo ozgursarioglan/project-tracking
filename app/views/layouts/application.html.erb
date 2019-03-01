@@ -1,21 +1,576 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProjectTracking</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <meta charset="utf-8" />
+  <title>Project - Project App</title>
+  <meta name="description" content="Responsive, Bootstrap, BS4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <%= favicon_link_tag '/assets/icon.png' %>
+  <!-- style -->
+  <!-- build:css ../assets/css/site.min.css -->
+   <%= stylesheet_link_tag "bootstrap" %>
+   <%= stylesheet_link_tag "i-con" %>
+    <%= stylesheet_link_tag "theme" %>
+    <%= stylesheet_link_tag "style" %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </head>
+  <%= javascript_include_tag "libs/jquery/dist/jquery.min" %>
+  <!-- Bootstrap -->
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= javascript_include_tag "libs/bootstrap/dist/js/bootstrap.min" %>
+
+  <%= javascript_include_tag "libs/pace-progress/pace.min" %>
+
+  <%= javascript_include_tag "libs/pjax/pjax.js" %>
+
+  <%= javascript_include_tag "ajax" %>
+  <!-- lazyload plugin -->
+  <%= javascript_include_tag "lazyload.config" %>
+
+  <%= javascript_include_tag "lazyload" %>
+
+  <%= javascript_include_tag "plugin" %>
+  <!-- theme -->
+  <%= javascript_include_tag "theme" %>
+  <!-- endbuild -->
+
+ <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+</head>
+<body class="layout-column">
+
+
+<header id="header" class="page-header bg-white box-shadow animate fadeInDown">
+  <div class="navbar navbar-expand-lg" >
+    <!-- btn to toggle sidenav on small screen -->
+    <a class="d-lg-none i-con-h-a px-1" data-toggle="modal" data-target="#aside">
+      <i class="i-con i-con-menu text-muted"></i>
+    </a>
+    <!-- brand -->
+    <a href="index.html" class="navbar-brand">
+    	<svg fill="#a9a9a9" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    	    <path class="fill" d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94 1.7 0 3.08 1.32 3.08 2.94 0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.04-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z"/>
+    	    <path d="M0 0h24v24H0z" fill="none"/>
+    	</svg>
+    	<!-- <img src="../assets/img/logo.png" alt="..."> -->
+    	<span class="hidden-folded d-inline l-s-n-1x ">Project</span>
+    </a>
+    <!-- / brand -->
+  
+    <!-- Navbar collapse -->
+    <div class="collapse navbar-collapse order-2 order-lg-1" id="navbarToggler">
+  	  <ul class="navbar-nav mx-auto" data-nav>
+  	    <li class="nav-item">
+  	      <a href="../html/card.admin.html" class="nav-link">
+  	        <span class="nav-text">Admin</span>
+  	      </a>
+  	    </li>
+  	    <li class="nav-item">
+  	      <a href="../html/card.news.html" class="nav-link">
+  	        <span class="nav-text">News</span>
+  	      </a>
+  	    </li>
+  	    <li class="nav-item">
+  	      <a href="../html/card.music.html" class="nav-link">
+  	        <span class="nav-text">Music &amp; Video</span>
+  	      </a>
+  	    </li>
+  	    <li class="nav-item">
+  	      <a href="../html/card.social.html" class="nav-link">
+  	        <span class="nav-text">Social</span>
+  	      </a>
+  	    </li>
+  	  </ul>
+  	  <form class="input-group m-2 my-lg-0 i-con-h-a ">
+  	      <span class="input-group-prepend">
+  	        <button type="button" class="btn no-shadow no-bg px-0"><i class="i-con i-con-search text-fade w-16"></i></button>
+  	      </span>
+  	      <input type="text" class="form-control no-border no-shadow no-bg typeahead" placeholder="Search..." data-plugin="typeahead">
+  	  </form>
+    </div>
+  
+    <ul class="nav navbar-menu order-1 order-lg-2">
+  
+     
+    
+      <!-- Notification -->
+      <li class="nav-item dropdown">
+        <a class="nav-link px-2 i-con-h-a mr-lg-2" data-toggle="dropdown">
+          <i class="i-con i-con-bell"><i></i></i>
+          <span class="badge badge-pill badge-up bg-primary">9</span>
+        </a>
+        <!-- dropdown -->
+        <div class="dropdown-menu dropdown-menu-right mt-3 w-md animate fadeIn p-0">
+            <div class="scrollable hover" style="max-height: 250px">
+              <div class="list list-row animates animates-fadeInUp">
+                  <div class="list-item " data-id="11">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-info-lt" >
+                            K
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          Prepare the documentation for the <a href='#'>Fitness app</a>
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+                  <div class="list-item " data-id="15">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-success-lt" >
+                            G
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          We attempted to charge your <a href='#'>Pro plan</a>
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+                  <div class="list-item " data-id="9">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-info-lt" >
+                            <img src="http://agile.blackui.com/assets/img/a3.jpg" alt=".">
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          Added to <a href='#'>GameTime</a> team
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+                  <div class="list-item " data-id="1">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-primary-lt" >
+                            <img src="http://agile.blackui.com/assets/img/a3.jpg" alt=".">
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          <a href='#'>@Mike</a> Send you a message
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+                  <div class="list-item " data-id="14">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-warning-lt" >
+                            L
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          Welcome to new ui dashboard, you are almost there
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+                  <div class="list-item " data-id="3">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                    <div>
+                    <a href="#">
+                      <span class="w-32 avatar circle bg-info-lt" >
+                            <img src="http://agile.blackui.com/assets/img/a3.jpg" alt=".">
+                      </span>
+                    </a>
+                    </div>
+              
+                    <div class="flex">
+                      
+              
+                        <div class="item-feed h-2x">
+                          <a href='#'>@James</a> submit a support ticket
+                        </div>
+              
+              
+                    </div>
+              
+              
+              
+              
+              
+              
+              
+              
+                  </div>
+              </div>
+            </div>
+            <div class="d-flex px-3 py-2 b-t">
+              <div class="flex">
+                <span>6 Notifications</span>
+              </div>
+              <a href="setting.html">See all <i class="fa fa-angle-right text-muted"></i></a>
+            </div>
+        </div>
+        <!-- / dropdown -->
+      </li>
+  
+
+
+
+
+
+      <!-- User dropdown menu -->
+      <li class="nav-item dropdown">
+        <a href="#" data-toggle="dropdown" class="nav-link d-flex align-items-center py-0 px-lg-0 px-2 text-color">
+
+
+
+					<% if user_signed_in? %>
+						  <span class=" mx-2 d-none l-h-1x d-lg-block text-right">
+              <small class='text-fade d-block mb-1'>Hello, Welcome</small>
+            <span><%= current_user.name %></span>
+          </span>
+          <span class="avatar w-36">
+          	<%= image_tag avatar_url(current_user.email) %>
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right w pt-0 mt-3 animate fadeIn">
+          <div class="row no-gutters mb-2 text-center r-t b-b">
+            <div class="col-4 b-r">
+              <a href="app.user.html" class="py-3 d-block i-con-h-a">
+                <i class="i-con i-con-users"><i></i></i>
+              </a>
+            </div>
+            <div class="col-4 b-r">
+              <a href="app.mail.html" class="py-3 d-block i-con-h-a">
+                <i class="i-con i-con-mail"><i></i></i>
+              </a>
+            </div>
+            <div class="col-4">
+              <a href="app.message.html" class="py-3 d-block i-con-h-a">
+                <i class="i-con i-con-comment"><i></i></i>
+              </a>
+            </div>
+          </div>
+          <a class="dropdown-item" href="page.profile.html">
+            <span>Profile</span>
+          </a>
+        	<%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
+          <a class="dropdown-item" href="page.price.html">
+            <span class="badge bg-success text-uppercase">Upgrade</span>
+            <span>to Pro</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="page.faq.html">
+            Need help?
+          </a>
+          
+						<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
+        </div>
+
+
+					<% else %>		
+		     <ul class="nav navbar-menu order-1 order-lg-2">
+		    <li class="nav-item dropdown">
+		      <a class="nav-link" data-toggle="dropdown">
+		        Sign in
+		      </a>
+		      <!-- dropdown -->
+		      <div class="dropdown-menu dropdown-menu-right">
+		        <div class="p-4">
+		        	
+		        </div>
+		        <div class="dropdown-divider"></div>
+		        <a class="dropdown-item" href="#">New around here? Sign up</a>
+		        <a class="dropdown-item" href="#">Forgot password?</a>
+		      </div>
+		      <!-- / dropdown -->
+		    </li>
+		    <li class="d-flex align-items-center">
+		      <a href="/register" class="btn btn-rounded btn-sm btn-primary d-none d-lg-block">
+		        Register
+		      </a>
+		    </li>
+		    <!-- Navarbar toggle btn -->
+		    <li class="nav-item d-lg-none">
+		      <a href="#" class="nav-link i-con-h-a px-1" data-toggle="collapse" data-toggle-class data-target="#navbarToggler">
+		        <i class="i-con i-con-nav text-muted"><i></i></i>
+		      </a>
+		    </li>
+		  </ul>
+					
+					<% end %>
+
+          
+
+
+
+
+
+      </li>
+      <!-- Navarbar toggle btn -->
+      
+    </ul>
+  
+  </div>
+</header>
+<div id="main" class="layout-row flex">
+
+<!-- ############ LAYOUT START-->
+
+	<!-- ############ Aside START-->
+	<div id="aside" class="page-sidenav no-shrink  nav-expand  animate fadeInLeft fade" aria-hidden="true">
+		<div class="sidenav h-100 modal-dialog bg-white box-shadow">
+		  <!-- sidenav top -->
+		  <!-- Flex nav content -->
+		 <div class="flex scrollable hover">
+					    	<div class="pt-2">
+					    	  <div class="nav-fold px-2">
+					    	    <a class="d-flex p-2" data-toggle="dropdown">
+					    	        <span class="avatar w-40 rounded hide">J</span>
+					    	        <img src="http://agile.blackui.com/assets/img/a1.jpg" alt="..." class="w-40 r">
+					    	    </a>
+					    	    <div class="hidden-folded flex p-2">
+					    	      <div class="d-flex">
+					    	        <a href="#" class="mr-auto text-nowrap">
+					    	          Garrett Winters
+					    	          <small class="d-block text-muted">Super Admin</small>
+					    	        </a>
+					    	      </div>
+					    	    </div>
+					    	  </div>
+					    	</div>
+					    	<div class="nav-stacked nav-active-primary" data-nav>
+					    	  <ul class="nav">
+					    	    <li class="nav-header">
+					    	      <span class="text-xs hidden-folded">Discover</span>
+					    	    </li>
+					    	    <li class="active">
+					    	      <a href="#">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-home"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">My Views</span>
+					    	      </a>
+					    	    </li>
+										<li>
+					    	      <a href="/projects">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-bookmark"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">Projects</span>
+					    	      </a>
+					    	    </li>
+											<li>
+					    	      <a href="#">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-comment"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">Issues</span>
+					    	      </a>
+					    	    </li>
+												<li>
+					    	      <a href="#">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-users"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">Users</span>
+					    	      </a>
+					    	    </li>
+					    	    <li class="nav-header hidden-folded">
+					    	      <span class="text-xs">Other Pages</span>
+					    	    </li>
+					    	    <li>
+					    	      <a href="#">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-bar-chart"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">Reports</span>
+					    	      </a>
+					    	    </li>
+					    	    <li>
+					    	      <a href="#">
+					    	        <span class="nav-icon">
+					    	          <i class="i-con i-con-calendar"><i></i></i>
+					    	        </span>
+					    	        <span class="nav-text">Settings</span>
+					    	      </a>
+					    	    </li>
+					    	  </ul>
+					    	</div>
+					  </div>
+		  <!-- sidenav bottom -->
+
+
+
+
+		  	<div class="py-2 mt-2 b-t no-shrink">
+						  <ul class="nav no-border">
+						    <li>
+						      <a href="#">
+						        <span class="nav-icon">
+						          <i class="i-con i-con-shutdown"></i>
+						        </span>
+						        <span class="nav-text">Logout</span>
+						      </a>
+						    </li>
+						  </ul>
+						</div>
+		</div>
+	</div>
+	<!-- ############ Aside END-->
+
+	<!-- ############ Content START-->
+	<div id="content" class="flex ">
+<!-- ############ Main START-->
+
+<div class="page-container" id="page-container">
+	
+	<div class="padding">
+
+  <%= yield %>
+ 
+</div>
+
+<!-- ############ Main END-->
+	</div>
+	<!-- ############ Content END-->
+
+<!-- ############ LAYOUT END-->
+
+</div>
+
+
+  <!-- endbuild -->
+</body>
 </html>

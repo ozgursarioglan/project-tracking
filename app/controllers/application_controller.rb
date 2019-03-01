@@ -1,4 +1,18 @@
 class ApplicationController < ActionController::Base
+
+    layout :layout_by_resource
+  
+    private
+  
+    def layout_by_resource
+      if devise_controller?
+        "login"
+      else
+        "application"
+      end
+    end
+
+
     protect_from_forgery with: :exception
 
     before_action :configure_permitted_parameters, if: :devise_controller?

@@ -1,33 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
+<h2>Projects</h2>
 
-<table>
+
+
+
+<table class="table">
+  <caption>List of users</caption>
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Company</th>
-      <th>Manager</th>
+      <th>Project Manager</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @projects.each do |project| %>
-      <tr>
+  <% @projects.each do |project| %>
+    <tr>
+         
         <td><%= project.name %></td>
         <td><%= project.description %></td>
         <td><%= project.company %></td>
-        <td><%= project.user.try(:email) || 'user not defined'  %></td>
+        <td><%= project.user.try(:fullname) || 'user not defined'  %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        
+    </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Project', new_project_path %>
