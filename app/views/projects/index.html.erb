@@ -2,35 +2,42 @@
 
 <h2>Projects</h2>
 
-
-
-
 <table class="table">
-  <caption>List of users</caption>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
+  <thead class="thead-light">
+   <tr>
+      <th></th>
+      <th>Project Name</th>
       <th>Company</th>
       <th>Project Manager</th>
-      <th colspan="3"></th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
-  <% @projects.each do |project| %>
+    <% @projects.each do |project| %>
     <tr>
-         
+        <td>#<%= project.id %></td>
         <td><%= project.name %></td>
-        <td><%= project.description %></td>
         <td><%= project.company %></td>
         <td><%= project.user.try(:fullname) || 'user not defined'  %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        
+        <div class="item-action dropdown">
+          <a href="#" data-toggle="dropdown" class="text-muted"><i class="i-con i-con-more"><i></i></i></a>
+          <div class="dropdown-menu dropdown-menu-right bg-dark" role="menu">
+              <%= link_to 'Show', project, :class => "dropdown-item" %>
+              <%= link_to 'Edit', edit_project_path(project), :class => "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "dropdown-item" %>
+          </div>
+        </div>
+
+</td>
         
     </tr>
     <% end %>
   </tbody>
 </table>
+
+
 
 

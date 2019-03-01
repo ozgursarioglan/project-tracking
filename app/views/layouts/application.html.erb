@@ -358,7 +358,7 @@
 					<% if user_signed_in? %>
 						  <span class=" mx-2 d-none l-h-1x d-lg-block text-right">
               <small class='text-fade d-block mb-1'>Hello, Welcome</small>
-            <span><%= current_user.name %></span>
+            <span><%= current_user.fullname %></span>
           </span>
           <span class="avatar w-36">
           	<%= image_tag avatar_url(current_user.email) %>
@@ -458,13 +458,14 @@
 					    	  <div class="nav-fold px-2">
 					    	    <a class="d-flex p-2" data-toggle="dropdown">
 					    	        <span class="avatar w-40 rounded hide">J</span>
-					    	        <img src="http://agile.blackui.com/assets/img/a1.jpg" alt="..." class="w-40 r">
+					    	        
+												<%= image_tag avatar_url(current_user.email), :class => "w-40 r" %>
 					    	    </a>
 					    	    <div class="hidden-folded flex p-2">
 					    	      <div class="d-flex">
 					    	        <a href="#" class="mr-auto text-nowrap">
-					    	          Garrett Winters
-					    	          <small class="d-block text-muted">Super Admin</small>
+					    	          <%= current_user.fullname %>
+					    	          <small class="d-block text-muted"> <%= current_user.department %></small>
 					    	        </a>
 					    	      </div>
 					    	    </div>
