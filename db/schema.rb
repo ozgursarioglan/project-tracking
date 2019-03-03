@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 2019_02_24_160401) do
     t.string "name"
     t.text "description"
     t.string "company"
+    t.integer "progress", default: 0
+    t.string "status"
+    t.datetime "startingdate"
+    t.datetime "enddate"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
