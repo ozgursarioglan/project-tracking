@@ -1,0 +1,32 @@
+  <%= yield %>
+
+
+
+  <%= javascript_include_tag "libs/jquery/dist/jquery.min" %>
+  <!-- Bootstrap -->
+
+  <%= javascript_include_tag "libs/bootstrap/dist/js/bootstrap.min" %>
+
+  <%= javascript_include_tag "libs/pace-progress/pace.min" %>
+
+  <%= javascript_include_tag "libs/pjax/pjax.js" %>
+
+  <%= javascript_include_tag "ajax" %>
+  <!-- lazyload plugin -->
+  <%= javascript_include_tag "lazyload.config" %>
+
+  <%= javascript_include_tag "lazyload" %>
+
+  <%= javascript_include_tag "plugin" %>
+  <!-- theme -->
+  <%= javascript_include_tag "theme" %>
+
+
+  <%= render :partial => "devise/sessions/new" %>
+
+
+  <h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

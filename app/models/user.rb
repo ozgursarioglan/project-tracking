@@ -6,4 +6,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :projects, foreign_key: :manager_id
+
+
+
+  belongs_to :user, :foreign_key => :manager_id, optional: true
+  
 end

@@ -52,9 +52,8 @@ ActiveRecord::Schema.define(version: 2019_02_24_160401) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "username", default: "", null: false
     t.string "fullname", default: ""
-    t.bigint "manager"
+    t.bigint "manager_id"
     t.string "company", default: ""
     t.string "department", default: ""
     t.boolean "isadmin", default: false
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_02_24_160401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["manager_id"], name: "index_users_on_manager_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   
 devise_scope :user do
   get '/users/sign_out' => 'devise/sessions#destroy'
@@ -8,6 +8,10 @@ devise_scope :user do
   get '/account',      to: 'devise/registrations#edit',  as: :account
   get '/forgotpassword',      to: 'devise/passwords#new',  as: :forgotpassword
 end
+
+devise_for :users, components: {registrations: 'registrations', sessions: 'sessions'}
+
+  resources :users 
   resources :projects
   resources :issues
   root to: 'home#index'
