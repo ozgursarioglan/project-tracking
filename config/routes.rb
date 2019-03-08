@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  default_url_options :host => "example.com"
   
 devise_scope :user do
   get '/users/sign_out' => 'devise/sessions#destroy'

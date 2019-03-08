@@ -116,11 +116,11 @@
 
                     <!-- Label -->
                     <label>
-                      Phone
+                      Job Title
                     </label>
 
                     <!-- Input -->
-                    <input type="text" class="form-control mb-3" placeholder="(___)___-____" data-mask="(000) 000-0000">
+                    <%= f.text_field :jobtitle, autofocus: true, autocomplete: "jobtitle", class: 'form-control' %>
 
                   </div>
 

@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 2019_02_24_160401) do
     t.bigint "manager_id"
     t.string "company", default: ""
     t.string "department", default: ""
+    t.string "jobtitle", default: ""
+    t.string "location", default: ""
+    t.string "timezone", default: ""
     t.boolean "isadmin", default: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

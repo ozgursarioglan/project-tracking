@@ -1805,7 +1805,7 @@ pre code {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #d2ddec;
-    border-radius: .375rem;
+    border-radius: .175rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -2298,7 +2298,7 @@ textarea.form-control {
     padding: .5rem .75rem;
     font-size: .9375rem;
     line-height: 1.5;
-    border-radius: .375rem;
+    border-radius: .175rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -5742,7 +5742,7 @@ a.close.disabled {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid transparent;
-    border-radius: .5rem;
+    border-radius: .2rem;
     outline: 0
 }
 

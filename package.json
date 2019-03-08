@@ -1,5 +1,7 @@
 {
   "name": "project-tracking",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "carbon-components": "^9.83.4"
+  }
 }

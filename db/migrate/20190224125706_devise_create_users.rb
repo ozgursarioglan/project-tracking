@@ -9,6 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.references :manager,                     foreign_key: true, default: ""                       
       t.string :company,                         default: ""
       t.string :department,                      default: ""
+      t.string :jobtitle,                        default: ""
+      t.string :location,                        default: ""
+      t.string :timezone,                        default: ""
       t.boolean :isadmin,                        default: false
       t.string :encrypted_password, null: false, default: ""
     
