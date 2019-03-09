@@ -1,5 +1,7 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_action :find_users, only: [:index, :show, :new, :edit]
+  before_action :find_projects, only: [:index, :show, :new, :edit]
 
   # GET /issues
   # GET /issues.json
@@ -25,6 +27,9 @@ class IssuesController < ApplicationController
   # POST /issues.json
   def create
     @issue = Issue.new(issue_params)
+
+    @issue.creator = current_user
+
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
@@ -64,6 +69,15 @@ class IssuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_issue
       @issue = Issue.find(params[:id])
+    end
+
+    def find_users
+      @users = User.all.order('created_at desc')
+    end
+
+
+    def find_projects
+      @projects = Project.all.order('created_at desc')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

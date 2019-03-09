@@ -7,6 +7,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :projects, foreign_key: :manager_id
 
+  has_many :issues, foreign_key: :assignedby_id
+
 
 
   belongs_to :user, :foreign_key => :manager_id, optional: true

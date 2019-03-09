@@ -22,12 +22,12 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @issue.type %>
+  <%= @issue.itype %>
 </p>
 
 <p>
   <strong>Project:</strong>
-  <%= @issue.project %>
+  <%= @issue.project.name %>
 </p>
 
 <p>
@@ -47,12 +47,14 @@
 
 <p>
   <strong>Assignedby:</strong>
-  <%= @issue.assignedby %>
+  <%= @issue.user_assigner.try(:fullname) %>
+  
 </p>
 
 <p>
   <strong>Openedby:</strong>
-  <%= @issue.openedby %>
+ <%= @issue.creator.try(:fullname) %>
+
 </p>
 
 <p>
@@ -62,7 +64,7 @@
 
 <p>
   <strong>Closedby:</strong>
-  <%= @issue.closedby %>
+  
 </p>
 
 <p>

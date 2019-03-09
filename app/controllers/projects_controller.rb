@@ -70,6 +70,8 @@ class ProjectsController < ApplicationController
     def find_users
       @users = User.all.order('created_at desc')
     end
+
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :description, :company, :manager_id)

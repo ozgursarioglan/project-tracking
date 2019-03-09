@@ -1,0 +1,240 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Issues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Category</th>
+      <th>Type</th>
+      <th>Project</th>
+      <th>Priority</th>
+      <th>Department</th>
+      <th>Isprivate</th>
+      <th>Assignedby</th>
+      <th>Openedby</th>
+      <th>Openeddate</th>
+      <th>Closedby</th>
+      <th>Closeddate</th>
+      <th>Deadline</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.title %></td>
+        <td><%= issue.description %></td>
+        <td><%= issue.status %></td>
+        <td><%= issue.category %></td>
+        <td><%= issue.type %></td>
+        <td><%= issue.project %></td>
+        <td><%= issue.priority %></td>
+        <td><%= issue.department %></td>
+        <td><%= issue.isprivate %></td>
+        <td><%= issue.assignedby %></td>
+        <td><%= issue.openedby %></td>
+        <td><%= issue.openeddate %></td>
+        <td><%= issue.closedby %></td>
+        <td><%= issue.closeddate %></td>
+        <td><%= issue.deadline %></td>
+        <td><%= link_to 'Show', issue %></td>
+        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+
+<table class="table table-sm table-nowrap card-table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div class="custom-control custom-checkbox table-checkbox">
+                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectAll">
+                          <label class="custom-control-label" for="ordersSelectAll">
+                            &nbsp;
+                          </label>
+                        </div>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="issues-category">
+                          Category
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="issues-priority">
+                          Priority
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="issues-status">
+                          Status
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="issues-updated">
+                          Updated
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="issues-title">
+                          Title
+                        </a>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
+                    
+                   
+                   <% @issues.each do |issue| %>
+                    <tr>
+                      <td>
+                        <div class="custom-control custom-checkbox table-checkbox">
+                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectThree">
+                          <label class="custom-control-label" for="ordersSelectThree">
+                            &nbsp;
+                          </label>
+                        </div>
+                      </td>
+                      <td class="issues-category">
+                        <%= issue.category %>
+                      </td>
+                      <td class="issues-priority">
+                        <%= issue.priority %>
+                      </td>
+                      <td class="issues-status">
+                       <div class="badge badge-soft-success">
+                        <%= issue.status %>
+                        </div>
+                      </td>
+                      <td class="issues-updated">
+                       <%= issue.updated_at %>
+                      </td>
+                      <td class="issues-title">
+                          <%= issue.title %>
+                      </td>
+                      <td class="text-right">
+                        <div class="dropdown">
+                          <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#!" class="dropdown-item">
+                              Action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                              Another action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                              Something else here
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+
+
+
+
+                <%= simple_form_for(@issue) do |form| %>
+  <% if issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+      <% issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :itype %>
+    <%= form.text_field :itype, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_id %>
+    <%= form.input_field :project_id, collection:@projects.map { |pr| [pr.name, pr.id] }, prompt: "Select Project" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.text_field :priority, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department %>
+    <%= form.text_field :department, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isprivate %>
+    <%= form.check_box :isprivate, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignedby_id %>
+    <%= form.input_field :assignedby_id, collection:@users.map { |a| [a.fullname, a.id] }, prompt: "Select Assagind" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :openeddate %>
+    <%= form.text_field :openeddate, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :closedby_id %>
+    <%= form.text_field :closedby_id, class: 'form-control' %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :closeddate %>
+    <%= form.text_field :closeddate, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.text_field :deadline, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
