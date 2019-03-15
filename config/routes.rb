@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :options
   default_url_options :host => "example.com"
   
 devise_scope :user do

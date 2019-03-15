@@ -1,10 +1,14 @@
 <!doctype html>
 <html lang="en">
-  
-<!-- Mirrored from dashkit.goodthemes.co/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Mar 2019 08:12:01 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
   <head>
-    <title>ProjectApp</title>
+    <title>
+      <%= if content_for?(:title) then yield(:title) + ' | ' end %>
+      My Awesome Site
+    </title>
+
+
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

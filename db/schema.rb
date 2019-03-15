@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_160401) do
+ActiveRecord::Schema.define(version: 2019_03_14_133707) do
 
   create_table "issues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2019_02_24_160401) do
     t.index ["closedby_id"], name: "index_issues_on_closedby_id"
     t.index ["openedby_id"], name: "index_issues_on_openedby_id"
     t.index ["project_id"], name: "index_issues_on_project_id"
+  end
+
+  create_table "options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "url"
+    t.string "home"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
