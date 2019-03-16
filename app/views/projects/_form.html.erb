@@ -1,48 +1,269 @@
-<%= simple_form_for(@project) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+
+  
+
+
+
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+
+      <!-- Header -->
+      <div class="header mt-md-5">
+        <div class="header-body">
+          <div class="row align-items-center">
+            <div class="col">
+
+              <!-- Pretitle -->
+              <h6 class="header-pretitle">
+                New project
+              </h6>
+
+              <!-- Title -->
+              <h1 class="header-title">
+                Create a new project
+              </h1>
+
+            </div>
+          </div> <!-- / .row -->
+        </div>
+      </div>
+
+      <!-- Form -->
+      <%= simple_form_for(@project) do |form| %>
+      <form class="mb-4">
+
+        <!-- Project name -->
+        <div class="form-group">
+          <label>
+            Project name
+          </label>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <!-- Project description -->
+        <div class="form-group">
+          <label class="mb-1">
+            Project description
+          </label>
+          <small class="form-text text-muted">
+            This is how others will learn about the project, so make it good!
+          </small>
+          <%= form.text_area :description, class: 'form-control' %>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+        <!-- Project tags -->
+        <div class="form-group">
+          <label>
+            Project Manager
+          </label>
+          <%= form.input_field :manager_id, collection:@users.map { |u| [u.fullname, u.id] }, prompt: "Select Manager", 'data-toggle' => 'select', class: 'form-control' %>
+        </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              <label>
+                Companny
+              </label>
+              <%= form.input_field :company, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+
+            <!-- Start date -->
+            <div class="form-group">
+              <label>
+                Status
+              </label>
+              <%= form.input_field :status, class: 'form-control' %>
+            </div>
+
+          </div>
+          <div class="col-12 col-md-6">
+
+            <!-- Start date -->
+            <div class="form-group">
+              <label>
+                Progress
+              </label>
+              <%= form.input_field :progress, class: 'form-control' %>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+
+            <!-- Start date -->
+            <div class="form-group">
+              <label>
+                Start date
+              </label>
+              <%= form.text_field :startingdate, class: 'form-control', 'data-toggle' => 'flatpickr' %>
+            </div>
+
+          </div>
+          <div class="col-12 col-md-6">
+
+            <!-- Start date -->
+            <div class="form-group">
+              <label>
+                End date
+              </label>
+              <%= form.text_field :enddate, class: 'form-control', 'data-toggle' => 'flatpickr' %>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+
+        <!-- Divider -->
+        <hr class="mt-4 mb-5">
+
+        <!-- Project cover -->
+        <div class="form-group">
+          <label class="mb-1">
+            Project cover
+          </label>
+          <small class="form-text text-muted">
+            Please use an image no larger than 1200px * 600px.
+          </small>
+          <div class="dropzone dropzone-single mb-3" data-toggle="dropzone" data-dropzone-url="http://">
+
+            <div class="fallback">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="projectCoverUploads">
+                <label class="custom-file-label" for="projectCoverUploads">Choose file</label>
+              </div>
+            </div>
+
+            <div class="dz-preview dz-preview-single">
+              <div class="dz-preview-cover">
+                <img class="dz-preview-img" src="...html" alt="..." data-dz-thumbnail>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="mt-5 mb-5">
+
+        <!-- Starting files -->
+        <div class="form-group">
+          <label class="mb-1">
+            Starting files
+          </label>
+          <small class="form-text text-muted">
+            Upload any files you want to start the projust with.
+          </small>
+          <div class="card">
+            <div class="card-body">
+              <div class="dropzone dropzone-multiple" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-multiple>
+
+                <div class="fallback">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFileUpload" multiple>
+                    <label class="custom-file-label" for="customFileUpload">Choose file</label>
+                  </div>
+                </div>
+
+                <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
+                  <li class="list-group-item px-0">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+                        <div class="avatar">
+                          <img class="avatar-img rounded" src="...html" alt="..." data-dz-thumbnail>
+                        </div>
+                      </div>
+                      <div class="col ml-n3">
+                        <h4 class="mb-1" data-dz-name>...</h4>
+                        <p class="small text-muted mb-0" data-dz-size></p>
+                      </div>
+                      <div class="col-auto">
+
+                        <div class="dropdown">
+                          <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item" data-dz-remove>
+                              Remove
+                            </a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="mt-5 mb-5">
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+
+            <!-- Private project -->
+            <div class="form-group">
+              <label class="mb-1">
+                Private project
+              </label>
+              <small class="form-text text-muted">
+                If you are available for hire outside of the current situation, you can encourage others to hire you.
+              </small>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="switchOne">
+                <label class="custom-control-label" for="switchOne"></label>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-md-6">
+
+            <!-- Warning -->
+            <div class="card bg-light border">
+              <div class="card-body">
+
+                <h4 class="mb-2">
+                  <i class="fe fe-alert-triangle"></i> Warning
+                </h4>
+
+                <p class="small text-muted mb-0">
+                  Once a project is made private, you cannot revert it to a public project.
+                </p>
+
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+
+        <!-- Divider -->
+        <hr class="mt-5 mb-5">
+
+        <!-- Buttons -->
+        <%= form.submit 'Submit', :class => 'btn btn-block btn-primary' %>
+
+
+
+      </form>
       <% end %>
-      </ul>
+
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company %>
-    <%= form.text_field :company %>
-  </div>
-
-
-  
-  
-
-  <div class="field">
-    <label class="label">Project Manager</label>
-    <div class="control has-icons-left">
-      <span class="select">
-       <%= form.input_field :manager_id, collection:@users.map { |u| [u.fullname, u.id] }, prompt: "Select Manager" %>
-      </span>
-      <span class="icon is-small is-left">
-        <i class="fa fa-tag"></i>
-      </span>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  </div> <!-- / .row -->
+</div>
