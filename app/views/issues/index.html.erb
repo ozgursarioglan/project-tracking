@@ -28,6 +28,8 @@
                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#benimmodal">
                                         Launch demo modal
                                     </button>
+
+                    <%= will_paginate @issues %>
                     
                   </div>
                 </div> <!-- / .row -->
@@ -189,12 +191,210 @@
                   <% end %>
                   </tbody>
                 </table>
+
+
+
+
+
+
+
               </div>
             </div>
 
           </div>
         </div> <!-- / .row -->
       </div>
+
+
+
+
+
+ <!-- Transaction Table -->
+ <div class="table-responsive-md u-datatable">
+   <table class="js-datatable table table-borderless u-datatable__striped u-datatable__content"
+          data-dt-info="#datatableInfo"
+          data-dt-search="#datatableSearch"
+          data-dt-entries="#datatableEntries"
+          data-dt-page-length="12"
+          data-dt-is-responsive="false"
+          data-dt-is-show-paging="true"
+
+          data-dt-pagination-classes="pagination mb-0"
+          data-dt-pagination-items-classes="page-item"
+          data-dt-pagination-links-classes="page-link"
+
+          data-dt-pagination-next-classes="page-item"
+          data-dt-pagination-next-link-classes="page-link"
+          data-dt-pagination-next-link-markup='<span aria-hidden="true">»</span>'
+
+          data-dt-pagination-prev-classes="page-item"
+          data-dt-pagination-prev-link-classes="page-link"
+          data-dt-pagination-prev-link-markup='<span aria-hidden="true">«</span>'>
+     <thead>
+     <tr class="text-uppercase font-size-1">
+       <th scope="col" class="font-weight-medium">
+         <div class="d-flex justify-content-between align-items-center">
+           Task
+           <div class="ml-2">
+             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
+             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
+           </div>
+         </div>
+       </th>
+       <th scope="col" class="font-weight-medium">
+         <div class="d-flex justify-content-between align-items-center">
+           Project
+           <div class="ml-2">
+             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
+             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
+           </div>
+         </div>
+       </th>
+       <th scope="col" class="font-weight-medium">
+         <div class="d-flex justify-content-between align-items-center">
+           Priority
+           <div class="ml-2">
+             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
+             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
+           </div>
+         </div>
+       </th>
+       <th scope="col" class="font-weight-medium">
+         <div class="d-flex justify-content-between align-items-center">
+           Due date
+           <div class="ml-2">
+             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
+             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
+           </div>
+         </div>
+       </th>
+       <th scope="col" class="font-weight-medium">
+         <div class="d-flex justify-content-between align-items-center">
+           Status
+           <div class="ml-2">
+             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
+             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
+           </div>
+         </div>
+       </th>
+     </tr>
+     </thead>
+     <tbody class="font-size-1">
+     <tr>
+       <td class="align-middle font-weight-normal">Home page redesign</td>
+       <td class="align-middle">Spotify</td>
+       <td class="align-middle text-danger">
+         <span class="fas fa-arrow-up mr-1"></span>
+         Highest
+       </td>
+       <td class="align-middle">25 Jul</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-primary small mr-1"></span>
+         In progress
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Logo branding</td>
+       <td class="align-middle">Dropbox</td>
+       <td class="align-middle text-warning">
+         <span class="fas fa-arrow-up mr-1"></span>
+         Medium
+       </td>
+       <td class="align-middle">12 Aug</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-primary small mr-1"></span>
+         In progress
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Website redesign</td>
+       <td class="align-middle">Google</td>
+       <td class="align-middle text-danger">
+         <span class="fas fa-arrow-up mr-1"></span>
+         High
+       </td>
+       <td class="align-middle">15 Aug</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-success small mr-1"></span>
+         Completed
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Home page redesign</td>
+       <td class="align-middle">FrontApp</td>
+       <td class="align-middle text-warning">
+         <span class="fas fa-arrow-up mr-1"></span>
+         Medium
+       </td>
+       <td class="align-middle">01 Aug</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-success small mr-1"></span>
+         Completed
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">SEO optimization</td>
+       <td class="align-middle">Slack</td>
+       <td class="align-middle text-success">
+         <span class="fas fa-arrow-down mr-1"></span>
+         Lowest
+       </td>
+       <td class="align-middle">02 Aug</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-warning small mr-1"></span>
+         On hold
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Branding</td>
+       <td class="align-middle">Spotify</td>
+       <td class="align-middle text-danger">
+         <span class="fas fa-arrow-up mr-1"></span>
+         High
+       </td>
+       <td class="align-middle">05 Sep</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-primary small mr-1"></span>
+         In progress
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Logo redesign</td>
+       <td class="align-middle">Htmlstream</td>
+       <td class="align-middle text-danger">
+         <span class="fas fa-arrow-up mr-1"></span>
+         High
+       </td>
+       <td class="align-middle">15 Sep</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-success small mr-1"></span>
+         Completed
+       </td>
+     </tr>
+
+     <tr>
+       <td class="align-middle font-weight-normal">Website redesign</td>
+       <td class="align-middle">GitHub</td>
+       <td class="align-middle text-success">
+         <span class="fas fa-arrow-down mr-1"></span>
+         Low
+       </td>
+       <td class="align-middle">16 Sep</td>
+       <td class="align-middle">
+         <span class="fas fa-circle text-warning small mr-1"></span>
+         On hold
+       </td>
+     </tr>
+     </tbody>
+   </table>
+ </div>
+ <!-- End Transaction Table -->
 
 
 

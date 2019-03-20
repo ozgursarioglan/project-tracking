@@ -14,6 +14,8 @@ gem 'simple_form', '~> 4.1'
 gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+#sayfala için bu gem kullanıyorum
+gem 'will_paginate', '~> 3.1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
