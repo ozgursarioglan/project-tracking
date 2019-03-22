@@ -8,7 +8,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :status
       t.datetime :startingdate
       t.datetime :enddate
-      t.bigint :manager, foreign_key: true
+      t.bigint :manager_id, foreign_key: true
 
       t.timestamps
     end

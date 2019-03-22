@@ -10,10 +10,10 @@ class CreateIssues < ActiveRecord::Migration[5.2]
       t.string :priority
       t.string :department
       t.boolean :isprivate
-      t.bigint :assignedby, foreign_key: true
-      t.bigint :openedby, foreign_key: true
+      t.bigint :assignedby_id, foreign_key: true
+      t.bigint :openedby_id, foreign_key: true
       t.datetime :openeddate
-      t.bigint :closedby, foreign_key: true
+      t.bigint :closedby_id, foreign_key: true
       t.datetime :closeddate
       t.datetime :deadline
 
