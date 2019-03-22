@@ -22,15 +22,11 @@
                   <div class="col-auto">
                     
                     <!-- Button -->
-                    <a href="/issues/new" class="btn btn-primary">
+                    <a href="/issues/new" class="btn btn-warning">
+                      <i class="fe fe-plus"></i>
                       New Issue
                     </a>
-                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#benimmodal">
-                                        Launch demo modal
-                                    </button>
 
-                    <%= will_paginate @issues %>
-                    
                   </div>
                 </div> <!-- / .row -->
                 <div class="row align-items-center">
@@ -114,7 +110,7 @@
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="issues-category">
-                          Category
+                          Title
                         </a>
                       </th>
                       <th>
@@ -134,8 +130,11 @@
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="issues-title">
-                          Title
+                          Assaging User
                         </a>
+                      </th>
+                      <th>
+
                       </th>
                     </tr>
                   </thead>
@@ -146,14 +145,14 @@
                     <tr>
                       <td>
                         <div class="custom-control custom-checkbox table-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="issuesSelectThree">
-                          <label class="custom-control-label" for="issuesSelectThree">
+                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="issuesSelect<%= issue.id %>">
+                          <label class="custom-control-label" for="issuesSelect<%= issue.id %>">
                             &nbsp;
                           </label>
                         </div>
                       </td>
                       <td class="issues-category">
-                        <%= issue.category %>
+                        <%= link_to issue.title, issue %>
                       </td>
                       <td class="issues-priority">
                         <%= issue.priority %>
@@ -167,7 +166,7 @@
                        <%= issue.updated_at.strftime('%F') %>
                       </td>
                       <td class="issues-title">
-                          <%= issue.title %>
+                        <%= issue.user_assigner.try(:fullname) %>
                       </td>
                       <td class="text-right">
                         <div class="dropdown">
@@ -175,15 +174,11 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
-                              Action
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                              Another action
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                              Something else here
-                            </a>
+                              <%= link_to 'Show', issue, class: 'dropdown-item' %>
+
+                              <%= link_to 'Edit', edit_issue_path(issue), class: 'dropdown-item' %>
+
+                              <%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } , class: 'dropdown-item' %>
                           </div>
                         </div>
                       </td>
@@ -192,335 +187,9 @@
                   </tbody>
                 </table>
 
-
-
-
-
-
-
               </div>
             </div>
 
           </div>
         </div> <!-- / .row -->
       </div>
-
-
-
-
-
- <!-- Transaction Table -->
- <div class="table-responsive-md u-datatable">
-   <table class="js-datatable table table-borderless u-datatable__striped u-datatable__content"
-          data-dt-info="#datatableInfo"
-          data-dt-search="#datatableSearch"
-          data-dt-entries="#datatableEntries"
-          data-dt-page-length="12"
-          data-dt-is-responsive="false"
-          data-dt-is-show-paging="true"
-
-          data-dt-pagination-classes="pagination mb-0"
-          data-dt-pagination-items-classes="page-item"
-          data-dt-pagination-links-classes="page-link"
-
-          data-dt-pagination-next-classes="page-item"
-          data-dt-pagination-next-link-classes="page-link"
-          data-dt-pagination-next-link-markup='<span aria-hidden="true">»</span>'
-
-          data-dt-pagination-prev-classes="page-item"
-          data-dt-pagination-prev-link-classes="page-link"
-          data-dt-pagination-prev-link-markup='<span aria-hidden="true">«</span>'>
-     <thead>
-     <tr class="text-uppercase font-size-1">
-       <th scope="col" class="font-weight-medium">
-         <div class="d-flex justify-content-between align-items-center">
-           Task
-           <div class="ml-2">
-             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
-             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
-           </div>
-         </div>
-       </th>
-       <th scope="col" class="font-weight-medium">
-         <div class="d-flex justify-content-between align-items-center">
-           Project
-           <div class="ml-2">
-             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
-             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
-           </div>
-         </div>
-       </th>
-       <th scope="col" class="font-weight-medium">
-         <div class="d-flex justify-content-between align-items-center">
-           Priority
-           <div class="ml-2">
-             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
-             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
-           </div>
-         </div>
-       </th>
-       <th scope="col" class="font-weight-medium">
-         <div class="d-flex justify-content-between align-items-center">
-           Due date
-           <div class="ml-2">
-             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
-             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
-           </div>
-         </div>
-       </th>
-       <th scope="col" class="font-weight-medium">
-         <div class="d-flex justify-content-between align-items-center">
-           Status
-           <div class="ml-2">
-             <span class="fas fa-angle-up u-datatable__thead-icon"></span>
-             <span class="fas fa-angle-down u-datatable__thead-icon"></span>
-           </div>
-         </div>
-       </th>
-     </tr>
-     </thead>
-     <tbody class="font-size-1">
-     <tr>
-       <td class="align-middle font-weight-normal">Home page redesign</td>
-       <td class="align-middle">Spotify</td>
-       <td class="align-middle text-danger">
-         <span class="fas fa-arrow-up mr-1"></span>
-         Highest
-       </td>
-       <td class="align-middle">25 Jul</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-primary small mr-1"></span>
-         In progress
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Logo branding</td>
-       <td class="align-middle">Dropbox</td>
-       <td class="align-middle text-warning">
-         <span class="fas fa-arrow-up mr-1"></span>
-         Medium
-       </td>
-       <td class="align-middle">12 Aug</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-primary small mr-1"></span>
-         In progress
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Website redesign</td>
-       <td class="align-middle">Google</td>
-       <td class="align-middle text-danger">
-         <span class="fas fa-arrow-up mr-1"></span>
-         High
-       </td>
-       <td class="align-middle">15 Aug</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-success small mr-1"></span>
-         Completed
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Home page redesign</td>
-       <td class="align-middle">FrontApp</td>
-       <td class="align-middle text-warning">
-         <span class="fas fa-arrow-up mr-1"></span>
-         Medium
-       </td>
-       <td class="align-middle">01 Aug</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-success small mr-1"></span>
-         Completed
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">SEO optimization</td>
-       <td class="align-middle">Slack</td>
-       <td class="align-middle text-success">
-         <span class="fas fa-arrow-down mr-1"></span>
-         Lowest
-       </td>
-       <td class="align-middle">02 Aug</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-warning small mr-1"></span>
-         On hold
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Branding</td>
-       <td class="align-middle">Spotify</td>
-       <td class="align-middle text-danger">
-         <span class="fas fa-arrow-up mr-1"></span>
-         High
-       </td>
-       <td class="align-middle">05 Sep</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-primary small mr-1"></span>
-         In progress
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Logo redesign</td>
-       <td class="align-middle">Htmlstream</td>
-       <td class="align-middle text-danger">
-         <span class="fas fa-arrow-up mr-1"></span>
-         High
-       </td>
-       <td class="align-middle">15 Sep</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-success small mr-1"></span>
-         Completed
-       </td>
-     </tr>
-
-     <tr>
-       <td class="align-middle font-weight-normal">Website redesign</td>
-       <td class="align-middle">GitHub</td>
-       <td class="align-middle text-success">
-         <span class="fas fa-arrow-down mr-1"></span>
-         Low
-       </td>
-       <td class="align-middle">16 Sep</td>
-       <td class="align-middle">
-         <span class="fas fa-circle text-warning small mr-1"></span>
-         On hold
-       </td>
-     </tr>
-     </tbody>
-   </table>
- </div>
- <!-- End Transaction Table -->
-
-
-
-       <div class="modal fade slide-up disable-scroll" id="benimmodal" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content-wrapper">
-                            <div class="modal-content">
-                                <div class="modal-header clearfix text-left">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        <i class="pg-close fs-14"></i>
-                                    </button>
-                                    <h5>Create  <span class="semi-bold">Issue</span></h5>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Project</label>
-                                                <span class="help">e.g. "Mona Lisa Portrait"</span>
-                                                <select class="full-width" data-init-plugin="select2" required>
-                                                    <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                        <option value="AK">Alaska</option>
-                                                        <option value="HI">Hawaii</option>
-                                                    </optgroup>
-                                                    <optgroup label="Pacific Time Zone">
-                                                        <option value="CA">California</option>
-                                                        <option value="NV">Nevada</option>
-                                                    </optgroup>
-                                                    <optgroup label="Mountain Time Zone">
-                                                        <option value="AZ">Arizona</option>
-                                                        <option value="CO">Colorado</option>
-                                                    </optgroup>
-                                                    <optgroup label="Central Time Zone">
-                                                        <option value="AL">Alabama</option>
-                                                        <option value="AR">Arkansas</option>
-                                                    </optgroup>
-                                                    <optgroup label="Eastern Time Zone">
-                                                        <option value="CT">Connecticut</option>
-                                                        <option value="DE">Delaware</option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Issue Type</label>
-                                                <select class="full-width" data-init-plugin="select2">
-                                                    <option value="AK">Improvement</option>
-                                                    <option value="HI">New Feature</option>
-                                                    <option value="HI">Bug</option>
-                                                    <option value="HI">Epic</option>
-                                                </select>
-                                              </div>
-                                       
-                                        </div>
-
-                                        <div class="col-6">
-                                          
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Issue Title</label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Issue Description</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group ">
-                                                <label for="formGroupExampleInput">Priority</label>
-                                                <select class="full-width" data-init-plugin="select2">
-                                                    <option value="AK">Highest</option>
-                                                    <option value="HI">Medium</option>
-                                                    <option value="HI">Low</option>
-                                                    <option value="HI">Lowest</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group ">
-                                                <label for="formGroupExampleInput">Assigned User</label>
-                                                <select class="full-width" data-init-plugin="select2">
-                                                    <option value="AK">Özgür SARIOĞLAN</option>
-                                                    <option value="HI">Servet ÇAYIR</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="form-group ">
-                                                <label for="formGroupExampleInput">Department</label>
-                                                <select class="full-width" data-init-plugin="select2">
-                                                    <option value="AK">Bilgi İşlem</option>
-                                                    <option value="HI">Planlama</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                          <div class="form-group">
-                                            <label for="formGroupExampleInput">Issue Status</label>
-                                            <select class="full-width" data-init-plugin="select2">
-                                                <option value="AK">Open</option>
-                                                <option value="HI">Close</option>
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                              <label for="formGroupExampleInput">Deadline</label>
-                                              <input class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Create Issue</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                    </div>
-
-
-

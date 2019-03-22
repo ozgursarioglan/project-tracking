@@ -2397,7 +2397,17 @@
     
    <%= javascript_include_tag "js/theme.min.js" %>
 
+    <script>
 
+        $('#btns').on('click',function(){
+            $('.toast').toggleClass('show')
+        });
+
+        $('.close').on('click',function(){
+            $('.toast').removeClass('show');
+        });
+
+    </script>
 
 
   </body>

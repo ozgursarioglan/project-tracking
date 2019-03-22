@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_03_14_133707) do
 
-  create_table "issues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "issues", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "status"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_133707) do
     t.index ["project_id"], name: "index_issues_on_project_id"
   end
 
-  create_table "options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "options", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "url"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_133707) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "company"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_133707) do
     t.index ["manager_id"], name: "index_projects_on_manager_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "fullname", default: ""
     t.bigint "manager_id"
