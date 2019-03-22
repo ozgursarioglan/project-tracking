@@ -4,11 +4,11 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.string :company
-      t.integer :progress
-      t.string :status,                        default: "0"
+      t.integer :progress,                        default: "0"
+      t.string :status
       t.datetime :startingdate
       t.datetime :enddate
-      t.references :manager, foreign_key: true
+      t.bigint :manager, foreign_key: true
 
       t.timestamps
     end

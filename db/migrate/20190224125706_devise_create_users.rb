@@ -6,7 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :fullname,                        default: ""
-      t.references :manager,                     foreign_key: true, default: ""                       
+      t.bigint :manager,                     foreign_key: true, default: ""
       t.string :company,                         default: ""
       t.string :department,                      default: ""
       t.string :jobtitle,                        default: ""

@@ -6,14 +6,14 @@ class CreateIssues < ActiveRecord::Migration[5.2]
       t.string :status
       t.string :category
       t.string :itype
-      t.references :project, foreign_key: true
+      t.bigint :project, foreign_key: true
       t.string :priority
       t.string :department
       t.boolean :isprivate
-      t.references :assignedby, foreign_key: true
-      t.references :openedby, foreign_key: true
+      t.bigint :assignedby, foreign_key: true
+      t.bigint :openedby, foreign_key: true
       t.datetime :openeddate
-      t.references :closedby, foreign_key: true
+      t.bigint :closedby, foreign_key: true
       t.datetime :closeddate
       t.datetime :deadline
 

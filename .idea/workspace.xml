@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74011e21-8e11-41b9-b0cf-e23edc4ca331" name="Default Changelist" comment="" />
+    <list default="true" id="74011e21-8e11-41b9-b0cf-e23edc4ca331" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190224160401_create_projects.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190224160401_create_projects.rb" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/log/" />
@@ -72,17 +76,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="67" column="24" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="24" />
+            <state relative-caret-position="390">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20190224160401_create_projects.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+            <state relative-caret-position="210">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -129,6 +142,9 @@
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190224160401_create_projects.rb" />
       </list>
     </option>
   </component>
@@ -310,7 +326,7 @@
       <workItem from="1553004810423" duration="149000" />
       <workItem from="1553059060447" duration="6784000" />
       <workItem from="1553172620505" duration="733000" />
-      <workItem from="1553243574954" duration="3082000" />
+      <workItem from="1553243574954" duration="3834000" />
     </task>
     <task id="LOCAL-00001" summary="ayarlar klasörü eklendi.">
       <created>1552651926000</created>
@@ -344,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27287000" />
+    <option name="totallyTimeSpent" value="28039000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,7 +388,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3281471" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25884017" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.688826" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50080776" side_tool="true" weight="0.32956153" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32956153" />
@@ -381,6 +397,29 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.22455573" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21647818" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32673267" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49919224" weight="0.32956153" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3281471" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.688826" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50080776" side_tool="true" weight="0.32956153" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32876712" />
+      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32956153" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.22455573" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -647,24 +686,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        <state relative-caret-position="150">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="67" column="24" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="24" />
+        <state relative-caret-position="390">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20190224125706_devise_create_users.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190224160401_create_projects.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        <state relative-caret-position="90">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190224141312_create_issues.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
