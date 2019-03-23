@@ -167,7 +167,7 @@
                               
                               <!-- Progress -->
                               <div class="progress progress-sm">
-                                <div class="progress-bar" role="progressbar" style="width: <%= project.progress %>%" aria-valuenow="<%= project.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar<% if project.progress == 100 %>progress-bar bg-success<% end %>" role="progressbar" style="width: <%= project.progress %>%" aria-valuenow="<%= project.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
 
                             </div>
