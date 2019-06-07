@@ -1,0 +1,272 @@
+<div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+            
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                       Issue
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                      <%= issue.title %>
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div class="card">
+                <div class="card-body">
+            
+
+            <%= simple_form_for(@issue) do |form| %>
+
+              <% if issue.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+                <ul>
+                <% issue.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+              <!-- Project name -->
+
+
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Project
+                    </label>
+                    <input class="form-control" value="<%= @issue.project.name %>">
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Department
+                    </label>
+                    <%= form.text_field :department, class: 'form-control',:readonly => true %>
+                  </div>
+
+                </div>
+              </div> <!-- / .row -->
+
+
+              <div class="row">
+              <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Type
+                    </label>
+                    <%= form.text_field :itype, class: 'form-control',:readonly => true %>
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Priority
+                    </label>
+                   <%= form.text_field :priority, class: 'form-control',:readonly => true %>
+                  </div>
+
+                </div>
+              </div> <!-- / .row -->
+
+
+              <div class="form-group">
+                <label>
+                  Issue Title
+                </label>
+                <%= form.text_field :title, class: 'form-control',:readonly => true %>
+              </div>
+
+              <!-- Project description -->
+              <div class="form-group">
+                <label class="mb-1">
+                  Issue description
+                </label>
+                <small class="form-text text-muted">
+                  This is how others will learn about the project, so make it good!
+                </small>
+                <%= form.text_area :description, class: 'form-control',:readonly => true %>
+              </div>
+
+              <!-- Project tags -->
+              <div class="form-group">
+                <label>
+                  Assigned User
+                </label>
+                
+                
+                <input class="form-control" value="<%= @issue.user_assigner.try(:fullname) %>" readonly>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Status
+                    </label>
+                    <%= form.text_field :status, class: 'form-control',:readonly => true %>
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Start date -->
+                  <div class="form-group">
+                    <label>
+                      Dead Line
+                    </label>
+                    <input class="form-control" value="<%= issue.updated_at.strftime('%F') %>">
+                  </div>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Divider -->
+       
+
+              <!-- Divider -->
+              <hr class="mt-5 mb-5">
+
+              <!-- Starting files -->
+              <div class="form-group">
+                <label class="mb-1">
+                  Starting files
+                </label>
+                <small class="form-text text-muted">
+                  Upload any files you want to start the projust with.
+                </small>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="dropzone dropzone-multiple" data-toggle="dropzone" data-dropzone-url="http://" data-dropzone-multiple>
+
+                      <div class="fallback">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFileUpload" multiple>
+                          <label class="custom-file-label" for="customFileUpload">Choose file</label>
+                        </div>
+                      </div>
+
+                      <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
+                        <li class="list-group-item px-0">
+                          <div class="row align-items-center">
+                            <div class="col-auto">
+                              <div class="avatar">
+                                <img class="avatar-img rounded" src="...html" alt="..." data-dz-thumbnail>
+                              </div>
+                            </div>
+                            <div class="col ml-n3">
+                              <h4 class="mb-1" data-dz-name>...</h4>
+                              <p class="small text-muted mb-0" data-dz-size></p>
+                            </div>
+                            <div class="col-auto">
+                              
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#" class="dropdown-item" data-dz-remove>
+                                    Remove
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <hr class="mt-5 mb-5">
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  
+                  <!-- Private project -->
+                  <div class="form-group">
+                    <label class="mb-1">
+                      Private project
+                    </label>
+                    <small class="form-text text-muted">
+                      If you are available for hire outside of the current situation, you can encourage others to hire you.
+                    </small>
+                    <div class="custom-control custom-switch">
+                      <%= form.check_box :isprivate, class: 'custom-control-input', id: 'switchOne',:readonly => true %>
+                      <label class="custom-control-label" for="switchOne"></label>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-12 col-md-6">
+
+                  <!-- Warning -->
+                  <div class="card bg-light border">
+                    <div class="card-body">
+                      
+                      <h4 class="mb-2">
+                        <i class="fe fe-alert-triangle"></i> Warning
+                      </h4>
+
+                      <p class="small text-muted mb-0">
+                        Once a project is made private, you cannot revert it to a public project.
+                      </p>
+
+                    </div>
+                  </div>
+                  
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Divider -->
+              <hr class="mt-5 mb-5">
+
+              <!-- Buttons -->
+               <%= form.submit 'Submit', :class => 'btn btn-block btn-primary' %>
+
+                            <%= link_to 'Back', issues_path, :class => 'btn btn-block btn-link text-muted' %>
+
+          
+            <% end %>
+
+
+  
+          </div>
+          </div>
+          </div>
+        </div> <!-- / .row -->
+      </div>

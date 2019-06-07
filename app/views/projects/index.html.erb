@@ -111,16 +111,17 @@
                 <div class="col-12 col-md-6 col-xl-4">
                   <!-- Card -->
                   <div class="card">
-                    <a href="project-overview.html">
+
                       <img src="https://dashkit.goodthemes.co/assets/img/avatars/projects/project-1.jpg" alt="..." class="card-img-top">
-                    </a>
+
                     <div class="card-body">
                       <div class="row align-items-center">
                         <div class="col">
                       
                           <!-- Title -->
                           <h4 class="card-title mb-2 name">
-                            <a href="project-overview.html"><%= project.name %></a>
+
+                            <%= link_to project.name, project %>
                           </h4>
 
                           <!-- Subtitle -->
@@ -137,15 +138,12 @@
                               <i class="fe fe-more-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="#!" class="dropdown-item">
-                                Action
-                              </a>
-                              <a href="#!" class="dropdown-item">
-                                Another action
-                              </a>
-                              <a href="#!" class="dropdown-item">
-                                Something else here
-                              </a>
+
+                              <%= link_to 'Show', project, class: 'dropdown-item' %>
+
+                              <%= link_to 'Edit', edit_project_path(project), class: 'dropdown-item' %>
+
+                              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } , class: 'dropdown-item' %>
                             </div>
                           </div>
 

@@ -1,0 +1,8 @@
+<% @options.each do |options| %>
+  <tr>
+    <td><%= options.name %></td>
+    <td><%= options.email %></td>
+    <td><%= link_to "Edit", edit_option_path(options), remote: true, class: "btn btn-default" %></td>
+    <td><%= link_to "Delete", edit_option_path(options), remote: true, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>

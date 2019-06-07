@@ -97,99 +97,32 @@
                 </div> <!-- / .row -->
               </div>
               <div class="table-responsive">
-             <table class="table table-sm table-nowrap card-table">
+                <table class="table table-nowrap">
                   <thead>
                     <tr>
-                      <th>
-                        <div class="custom-control custom-checkbox table-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="issuesSelectAll">
-                          <label class="custom-control-label" for="issuesSelectAll">
-                            &nbsp;
-                          </label>
-                        </div>
-                      </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="issues-category">
-                          Title
-                        </a>
-                      </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="issues-priority">
-                          Priority
-                        </a>
-                      </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="issues-status">
-                          Status
-                        </a>
-                      </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="issues-updated">
-                          Updated
-                        </a>
-                      </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="issues-title">
-                          Assaging User
-                        </a>
-                      </th>
-                      <th>
-
-                      </th>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Priority</th>
+                      <th scope="col">Open Date</th>
+                      <th scope="col">Deadline</th>
+                      <th scope="col">Assigned</th>
                     </tr>
                   </thead>
-                  <tbody class="list">
-                    
-                   
-                   <% @issues.each do |issue| %>
+                  <tbody>
+                  <% @issues.each do |issue| %>
                     <tr>
-                      <td>
-                        <div class="custom-control custom-checkbox table-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="ordersSelect" id="issuesSelect<%= issue.id %>">
-                          <label class="custom-control-label" for="issuesSelect<%= issue.id %>">
-                            &nbsp;
-                          </label>
-                        </div>
-                      </td>
-                      <td class="issues-category">
-                        <%= link_to issue.title, issue %>
-                      </td>
-                      <td class="issues-priority">
-                        <%= issue.priority %>
-                      </td>
-                      <td class="issues-status">
-                       <div class="badge badge-soft-success">
-                        <%= issue.status %>
-                        </div>
-                      </td>
-                      <td class="issues-updated">
-                       <%= issue.updated_at.strftime('%F') %>
-                      </td>
-                      <td class="issues-title">
-                        <%= issue.user_assigner.try(:fullname) %>
-                      </td>
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fe fe-more-vertical"></i>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right">
-                              <%= link_to 'Show', issue, class: 'dropdown-item' %>
-
-                              <%= link_to 'Edit', edit_issue_path(issue), class: 'dropdown-item' %>
-
-                              <%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } , class: 'dropdown-item' %>
-                          </div>
-                        </div>
-                      </td>
+                      <th scope="row"><%= issue.id %></th>
+                      <td><%= link_to issue.title, issue %></td>
+                      <td><%= issue.priority %></td>
+                      <td><%= issue.updated_at.strftime('%F') %></td>
+                      <td><a class="<% if issue.deadline < Time.now %>text-danger<% end %>"><%= issue.deadline.strftime('%F') %></a></td>
+                      <td><%= issue.user_assigner.try(:fullname) %></td>
                     </tr>
                   <% end %>
                   </tbody>
                 </table>
-
               </div>
             </div>
-
           </div>
         </div> <!-- / .row -->
       </div>

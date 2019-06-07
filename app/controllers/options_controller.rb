@@ -40,6 +40,11 @@ class OptionsController < ApplicationController
   # PATCH/PUT /options/1
   # PATCH/PUT /options/1.json
   def update
+    @option = Option.all
+    @option = Option.find(params[:id])
+
+    @option.update_attributes(product_params)
+
     respond_to do |format|
       if @option.update(option_params)
         format.html { redirect_to @option, notice: 'Option was successfully updated.' }
