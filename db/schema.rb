@@ -2,6 +2,7 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
+
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
@@ -18,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_133707) do
   create_table "issues", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.text "status"
+    t.bigint "status"
     t.text "category"
     t.text "itype"
     t.bigint "project_id"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_133707) do
     t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_issues_on_status"
     t.index ["assignedby_id"], name: "index_issues_on_assignedby_id"
     t.index ["closedby_id"], name: "index_issues_on_closedby_id"
     t.index ["openedby_id"], name: "index_issues_on_openedby_id"
