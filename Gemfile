@@ -11,7 +11,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 # Use Puma as the app server
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
