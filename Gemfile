@@ -14,7 +14,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'simple_form', '~> 4.1'
 # Use Puma as the app server
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 #sayfala için bu gem kullanıyorum
 gem 'will_paginate', '~> 3.1.0'
 # Use SCSS for stylesheets
